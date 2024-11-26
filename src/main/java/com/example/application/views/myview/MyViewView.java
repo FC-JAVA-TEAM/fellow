@@ -1,5 +1,8 @@
 package com.example.application.views.myview;
 
+
+import com.example.application.service.NewbornBuffaloService;
+import com.example.application.service.PurchasedBuffaloService;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.html.Div;
@@ -12,12 +15,16 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 
-@PageTitle("My View")
+@PageTitle("Buffalo Add View")
 @Menu(icon = "line-awesome/svg/pencil-ruler-solid.svg", order = 0)
-@Route(value = "")
+@Route(value = "MainView")
 public class MyViewView extends Composite<VerticalLayout> {
 
-    public MyViewView() {
+	  private final NewbornBuffaloService newbornBuffaloService;
+	    private final PurchasedBuffaloService purchasedBuffaloService;
+	    public MyViewView(NewbornBuffaloService newbornBuffaloService, PurchasedBuffaloService purchasedBuffaloService) {
+	        this.newbornBuffaloService = newbornBuffaloService;
+	        this.purchasedBuffaloService = purchasedBuffaloService;
         HorizontalLayout layoutRow = new HorizontalLayout();
         TabSheet tabSheet = new TabSheet();
         HorizontalLayout layoutRow2 = new HorizontalLayout();
@@ -44,7 +51,16 @@ public class MyViewView extends Composite<VerticalLayout> {
 
     private void setTabSheetSampleData(TabSheet tabSheet) {
         tabSheet.add("Dashboard", new Div(new Text("This is the Dashboard tab content")));
-        tabSheet.add("Payment", new Div(new Text("This is the Payment tab content")));
-        tabSheet.add("Shipping", new Div(new Text("This is the Shipping tab content")));
+        
+//        PurchasedBuffaloFormView purchasedBuffaloFormView = new PurchasedBuffaloFormView(purchasedBuffaloService);
+//        tabSheet.add("Purchased Buffalo", purchasedBuffaloFormView);
+//        
+//        NewbornBuffaloFormView newbornBuffaloFormView = new NewbornBuffaloFormView(newbornBuffaloService);
+//        tabSheet.add("Newborn Buffalo", newbornBuffaloFormView);
+
+      //  tabSheet.add("Purchased Bufflo", NewbornBuffaloFormView.class);
+      //  tabSheet.add("Purchased Bufflo", new Div(new Text("Purchase from other")));
+        //tabSheet.add("Born Bufflo", new Div(new Text("Born here")));
     }
 }
+
